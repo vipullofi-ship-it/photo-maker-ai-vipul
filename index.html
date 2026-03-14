@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIPUL EDITOR | High-End Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #07080a;
+      --bg-glass: rgba(15, 18, 22, 0.6);
+      --border: rgba(255, 255, 255, 0.06);
+      --text-primary: #f8fafc;
+      --text-secondary: #64748b;
+      --accent: #2dd4bf;
+      --accent-glow: rgba(45, 212, 191, 0.4);
+    }
+    
+    [data-theme="light"] {
+      --bg-main: #f8fafc;
+      --bg-glass: rgba(255, 255, 255, 0.7);
+      --border: rgba(0, 0, 0, 0.05);
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --accent: #0d9488;
+      --accent-glow: rgba(13, 148, 136, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      overflow: hidden;
+      margin: 0;
+      transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .aura-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .glow-blob {
+      position: absolute;
+      width: 70vw;
+      height: 70vw;
+      filter: blur(140px);
+      opacity: 0.12;
+      border-radius: 50%;
+      animation: drift 40s infinite alternate ease-in-out;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(-20%, -20%) rotate(0deg) scale(1); }
+      50% { transform: translate(10%, 10%) rotate(180deg) scale(1.1); }
+      100% { transform: translate(-10%, 15%) rotate(360deg) scale(1); }
+    }
+
+    .glass {
+      background: var(--bg-glass);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid var(--border);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 3px; height: 3px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; opacity: 0.3; }
+    
+    input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; cursor: pointer; }
+    input[type=range]::-webkit-slider-runnable-track { height: 2px; background: var(--border); border-radius: 2px; }
+    input[type=range]::-webkit-slider-thumb { 
+      -webkit-appearance: none; 
+      height: 14px; width: 14px; 
+      border-radius: 50%; 
+      background: var(--accent); 
+      margin-top: -6px;
+      box-shadow: 0 0 15px var(--accent-glow);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    input[type=range]:active::-webkit-slider-thumb { transform: scale(1.4); }
+
+    .tab-content-enter { animation: tab-enter 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+    @keyframes tab-enter {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .curve-path { transition: d 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "react/": "https://esm.sh/react@^19.2.4/",
+      "react": "https://esm.sh/react@^19.2.4",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+      "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+      "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+    }
+  }
+  </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div class="aura-bg">
+    <div class="glow-blob" style="background: var(--accent); top: -25%; left: -25%;"></div>
+    <div class="glow-blob" style="background: #8b5cf6; bottom: -25%; right: -25%; animation-delay: -5s;"></div>
+  </div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

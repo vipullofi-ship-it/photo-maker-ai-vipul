@@ -1,0 +1,7 @@
+{
+  "name": "VIPUL EDITOR",
+  "description": "Professional passport photo editor with AI background removal, custom cropping, and automated A4 sheet layout for high-efficiency studio workflows.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
