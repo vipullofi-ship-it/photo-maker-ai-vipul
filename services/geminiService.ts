@@ -6,7 +6,7 @@ export const removeBackgroundAndOptimize = async (
   mimeType: string, 
   customInstructions?: string
 ): Promise<string> => {
-  const response = await fetch('/.netlify/functions/process-image', {
+  const response = await fetch('/api/process-image', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ base64Image, mimeType, customInstructions })
